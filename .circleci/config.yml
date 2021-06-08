@@ -6,11 +6,13 @@ orbs:
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
   python: circleci/python@1.2
+  slack: circleci/slack@4.4.2
 
 jobs:
   build:
     docker:
       - image: cimg/python:3.8
+      - image: cimg/base:stable
     # Checkout the code as the first step. This is a dedicated CircleCI step.
     # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
     # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
@@ -29,3 +31,4 @@ jobs:
             pipenv run pytest --version
             pipenv run pytest -s -v
           name: Test it
+      - slack/notify
