@@ -16,11 +16,16 @@ jobs:
     # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
+    environment:
+      PYTHONPATH: /home/circleci/project/:/home/circleci/project/api/coronavstech/
+      DJANGO_SETTINGS_MODULE: 'coronavstech.settings'
     steps:
       - checkout
+      - python/install-packages:
+          args: pytest
+          pkg-manager: pipenv
       - run:
-          name: Run django tests
           command: |
-            pip install pipenv
-            pipenv install
-            pytest
+            pipenv run pytest --version
+            pipenv run pytest -s -v
+          name: Test it
