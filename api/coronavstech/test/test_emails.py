@@ -4,8 +4,9 @@ import json
 
 import pytest
 
+
 def test_send_email_should_succeed(mailoutbox, settings) -> None:
-    settings.EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend"
+    settings.EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
     assert len(mailoutbox) == 0
 
     mail.send_mail(
@@ -20,6 +21,7 @@ def test_send_email_should_succeed(mailoutbox, settings) -> None:
     assert len(mailoutbox) == 1
 
     assert mailoutbox[0].subject == "Test Subject here"
+
 
 def test_send_email_without_arguments_should_send_empty_email(client) -> None:
     with patch(
@@ -36,6 +38,7 @@ def test_send_email_without_arguments_should_send_empty_email(client) -> None:
             from_email="dev123naoya@gmail.com",
             recipient_list=["dev123naoya@gmail.com"],
         )
+
 
 def test_send_email_with_get_verb_should_fail(client) -> None:
     response = client.get(path="/send-email")
