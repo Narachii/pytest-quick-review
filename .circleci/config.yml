@@ -26,8 +26,3 @@ jobs:
             pipenv run pytest --version
             pipenv run pytest
           name: Test it
-
-workflows:
-  main:
-    jobs:
-      - build-and-test
