@@ -30,4 +30,4 @@ jobs:
             pipenv run pytest
           name: Test it
       - store_test_results:
-        path: test-results
+          path: test-results
