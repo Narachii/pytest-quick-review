@@ -32,6 +32,9 @@ jobs:
             pipenv run pytest -s -v
           name: Test it
       - slack/notify:
-          channel: piplines
-          event: always
+          event: fail
+          mentions: '@narachii'
           template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
