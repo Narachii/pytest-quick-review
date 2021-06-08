@@ -31,4 +31,4 @@ jobs:
             pipenv run pytest --version
             pipenv run pytest -s -v
           name: Test it
-      - slack/notify
+      - slack/status
