@@ -23,5 +23,7 @@ jobs:
           pkg-manager: pipenv
       - run:
           command: |
+            echo "export PATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech" >> $BASH_ENV
             pipenv run pytest --version
-            pipenv run pytest -v -s
+            pipenv run pytest
+          name: Test it
