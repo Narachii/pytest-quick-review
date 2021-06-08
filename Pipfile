@@ -8,6 +8,7 @@ pytest = "*"
 django = "*"
 black = "*"
 djangorestframework = "*"
+pytest-django = "*"
 
 [dev-packages]
 
