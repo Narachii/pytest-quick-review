@@ -18,12 +18,14 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
+      - run:
+          command: echo "export PATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech" >> $BASH_ENV
+          name: Setup custom environment variables
       - python/install-packages:
           args: pytest
           pkg-manager: pipenv
       - run:
           command: |
-            echo "export PATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech" >> $BASH_ENV
             pipenv run pytest --version
             pipenv run pytest
           name: Test it
