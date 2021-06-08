@@ -32,6 +32,6 @@ jobs:
             pipenv run pytest -s -v
           name: Test it
       - slack/notify:
-        channel: piplines
-        event: always
-        template: basic_fail_1
+          channel: piplines
+          event: always
+          template: basic_fail_1
